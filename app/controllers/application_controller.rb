@@ -11,5 +11,9 @@ class ApplicationController < ActionController::Base
   end
   helper_method :logged_in?
 
-  
+    def sign_in(user)
+    	session[:user_id] = user.id
+  	end
+  	helper_method :sign_in(user)
+  	
 end
