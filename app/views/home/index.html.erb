@@ -5,6 +5,7 @@
  	<p><%= link_to "Sign out", sign_out_path, method: :delete %></p>
  <% else %>
  	<p><%= link_to "Sign_in", sign_in_path %></p>
+ 	<p><%= link_to "Sign in with Facebook", "/auth/facebook" %></p>
  	<p>OR</p>
  	<p><%= link_to "Sign up", sign_up_path %></p>
  <% end %>
