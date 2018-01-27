@@ -16,6 +16,9 @@ class UsersController < ApplicationController
   		end
 	end
 
+	def show
+	end
+
 	private
 
 	def find_user

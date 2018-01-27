@@ -8,7 +8,7 @@
         <li><%= link_to "Sign up", sign_up_path %></li>
         <li><%= link_to "Sign in", sign_in_path %></li>
       <% elsif logged_in? %>
-        <li>Signed in as: &nbsp;<i class="fa fa-user-circle-o fa-lg" aria-hidden="true"></i>&nbsp;&nbsp;<%= current_user.name %></li>
+        <li>Signed in as: <%= link_to current_user.name, user_path(current_user.id) %></li>
         <li><%= link_to "Sign out", sign_out_path, method: :delete %></li>
       <% end %>
     </ul>
