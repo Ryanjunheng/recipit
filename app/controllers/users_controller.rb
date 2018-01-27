@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 	before_action :find_user, only: [:show, :edit, :update]
+	before_action :current_user_check, only: [:edit, :update]
 
 	def new 
 		@user = User.new
@@ -17,6 +18,15 @@ class UsersController < ApplicationController
 	end
 
 	def show
+	end
+
+	def edit
+	end
+
+	def update
+		@user.update(user_params)
+		flash[:notice] = "Profile has been updated successfully!"
+		redirect_to @user
 	end
 
 	private

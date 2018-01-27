@@ -1,0 +1,15 @@
+<h2>Edit your profile here</h2>
+<br>
+<%= form_for @user do |form|  %>
+
+	Name: <%= form.text_field :name, class:"form-control"%><br>
+
+	Email: <%= form.text_field :email, type: 'email', class:"form-control" %><br>
+
+	Password: <%= form.password_field :password, class:"form-control" %><br>
+
+	Password Confirmation: <%= form.password_field :password_confirmation, class:"form-control" %><br>
+	
+	<%= form.submit value:"Update", class:"btn btn-primary align-cente" %>
+
+<% end %>

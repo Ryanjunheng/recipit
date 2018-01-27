@@ -2,12 +2,18 @@
 
 <%= form_for @user do |form| %>
 
-  Name: <%= form.text_field :name %><br>
-  Email: <%= form.text_field :email %><br>
-  Password: <%= form.password_field :password %><br>
-  Password Confirmation: <%= form.password_field :password_confirmation %><br>
-  <%= form.submit "Submit" %><br><br>
-  <p>OR</p>
-  <p><%= link_to raw('<i class="fa fa-facebook-official" aria-hidden="true"></i> Sign up with Facebook'), "/auth/facebook" %></p>
+  Name: <%= form.text_field :name, class:"form-control" %><br>
+
+  Email: <%= form.text_field :email, class:"form-control" %><br>
+
+  Password: <%= form.password_field :password, class:"form-control" %><br>
+
+  Password Confirmation: <%= form.password_field :password_confirmation, class:"form-control" %><br>
+
+  <%= form.submit "Submit", class:"btn btn-primary" %><br><br>
+
+  <p class="align-center">OR</p>
+
+  <p><%= link_to raw('<i class="fa fa-facebook-official" aria-hidden="true"></i> Sign up with Facebook'), "/auth/facebook", class:"btn btn-primary" %></p>
 
 <% end %>
