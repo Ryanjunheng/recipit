@@ -13,6 +13,7 @@ class UsersController < ApplicationController
     		flash[:notice] = "Signed up successfully"
     		redirect_to '/'
   		else
+  			flash[:notice] = "Password confirmation doesn't match password"
     		redirect_to '/sign_up'
   		end
 	end
