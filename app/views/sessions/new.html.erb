@@ -2,8 +2,11 @@
 
 <%= form_tag '/login' do %>
 
-  Email: <%= text_field_tag :email %>
-  Password: <%= password_field_tag :password %>
+  Email: <%= text_field_tag :email %><br>
+  Password: <%= password_field_tag :password %><br>
   <%= submit_tag "Submit" %>
+  <br><br>
+  <p>OR</p>
+  <p><%= link_to raw('<i class="fa fa-facebook-official" aria-hidden="true"></i> Sign in with Facebook'), "/auth/facebook" %></p>
 
 <% end %>
