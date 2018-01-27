@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     	if user && user.authenticate(params[:password])
       
       	session[:user_id] = user.id
-      	flash[:notice] = "Signed in sucessfully"
+      	flash[:notice] = "Welcome back, " + user.name + "!"
       	redirect_to '/'
     else
     
@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
 
 	def destroy
 		session[:user_id] = nil
-		flash[:notice] = "Signed out sucessfully."
+		flash[:notice] = "We will miss you ;("
     	redirect_to '/'
 	end
 
@@ -32,7 +32,7 @@ class SessionsController < ApplicationController
      if authentication != nil
        user = authentication.user
        authentication.update_token(auth_hash)
-       @notice = "Signed in sucessfully"
+       @notice = "Welcome back, " + user.name + "!"
      # else: user logs in with OAuth for the first time
     elsif (user = User.find_by(email: auth_hash['info']['email'])) != nil
         authentication = Authentication.create_with_omniauth(auth_hash)
