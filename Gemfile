@@ -12,6 +12,7 @@ gem 'bcrypt'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'figaro'
+gem 'simple_form'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
 # Use Puma as the app server
