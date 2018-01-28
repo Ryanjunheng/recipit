@@ -1,6 +1,6 @@
 <h1>Signup!</h1>
 
-<%= form_for @user do |form| %>
+<%= form_for @user, remote: true do |form| %>
 
   Name: <%= form.text_field :name, class:"form-control" %><br>
 
