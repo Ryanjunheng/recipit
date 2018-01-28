@@ -18,6 +18,7 @@ gem "mini_magick"
 gem 'fog'
 gem 'kaminari'
 gem "cocoon"
+gem 'rest-client'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
 # Use Puma as the app server
