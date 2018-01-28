@@ -1,8 +1,23 @@
-<h1><%= @recipe.title %></h1>
-<br>
 <%= image_tag @recipe.image %>
 <br>
+<h1><%= @recipe.title %></h1>
+<br>
+<h3>Description:</h3>
 <p><%= @recipe.description %></p>
+<br>
+<h3>Ingredients:</h3>
+<ul>
+	<% @recipe.ingredients.each do |ingredient| %>
+		<li><%= ingredient.name %></li>
+	<% end %>
+</ul>
+<br>
+<h3>Directions:</h3>
+<ol>
+	<% @recipe.directions.each do |direction| %>
+		<li><%= direction.step %></li>
+	<% end %>
+</ol>
 <br>
 <%= link_to "Edit", edit_user_recipe_path(current_user.id, @recipe.id), class:"btn btn-default" %>
 <%= link_to "Delete", user_recipe_path(current_user.id, @recipe.id), method: :delete, data: { confirm: 'Sure? This action cannot be reverted!' }, class:"btn btn-danger" %>

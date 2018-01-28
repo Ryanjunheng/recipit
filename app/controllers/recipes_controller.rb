@@ -13,8 +13,7 @@ class RecipesController < ApplicationController
 			flash[:notice] = "Recipe is created successfully!"
 			redirect_to user_recipe_path(current_user.id, @recipe.id)
 		else
-			p @recipe.errors
-			flash[:notice] = "Something went wrong, please try again."
+			flash[:notice] = "Something went wrong, please try again. (Please fill in all the fields)"
 			redirect_to new_user_recipe_path(current_user.id)
 		end
 	end
@@ -49,6 +48,6 @@ class RecipesController < ApplicationController
 	end
 
 	def recipe_params
-		params.require(:recipe).permit(:title, :description, :image, :user_id)
+		params.require(:recipe).permit(:title, :description, :image, :user_id, ingredients_attributes: [:id, :name, :_destroy], directions_attributes: [:id, :step, :_destroy])
 	end
 end

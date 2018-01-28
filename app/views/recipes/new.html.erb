@@ -4,13 +4,33 @@
 
 <%= form_for @recipe, url: user_recipes_path(current_user.id), method: :post do |form| %>
 
-	Title: <%= form.text_field :title, class:"form-control" %><br>
-
-	Description: <%= form.text_area :description, class:"form-control" %><br>
-
-	Upload a cover photo <%= form.file_field :image %><br>
-
 	<%= form.hidden_field :user_id, value:current_user.id %>
+
+	<h3>Title:</h3> <%= form.text_field :title, class:"form-control" %><br>
+
+	<h3>Description:</h3> <%= form.text_area :description, class:"form-control" %><br>
+
+	<h3>Upload a cover photo</h3> <%= form.file_field :image %><br>
+
+	<h3>Ingredients:</h3>
+	<div id='ingredients'>
+    <%= form.fields_for :ingredients do |ingredient| %>
+      <%= render 'ingredient_fields', :form => ingredient %>
+    <% end %>
+    <div class='links'>
+      <%= link_to_add_association 'add ingredient', form, :ingredients, form_name: "form", class:"btn btn-default" %>
+    </div>
+  	</div>
+
+  	<h3>Directions:</h3>
+	<div id='directions'>
+    <%= form.fields_for :directions do |direction| %>
+		<%= render 'direction_fields', :form => direction %>
+    <% end %>
+    <div class='links'>
+      <%= link_to_add_association 'add direction', form, :directions, form_name: "form", class:"btn btn-default" %>
+    </div>
+  	</div>
 
 	<%= form.submit "Create!" %>
 
