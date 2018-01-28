@@ -13,6 +13,10 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'figaro'
 gem 'simple_form'
+gem 'carrierwave', '~> 1.0'
+gem "mini_magick"
+gem 'fog'
+gem 'kaminari'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
 # Use Puma as the app server

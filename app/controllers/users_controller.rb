@@ -13,11 +13,13 @@ class UsersController < ApplicationController
     		flash[:notice] = "Signed up successfully"
     		redirect_to '/'
   		else
+  			flash[:notice] = "Password confirmation doesn't match password"
     		redirect_to '/sign_up'
   		end
 	end
 
 	def show
+		@recipe = Recipe.where(user_id: @user.id).order(:created_at).page params[:page]
 	end
 
 	def edit
@@ -34,6 +36,10 @@ class UsersController < ApplicationController
 	def find_user
 		@user = User.find(params[:id])
 	end
+
+	def current_user_check
+    	redirect_to "/", notice: "Hold it right there! Please login or signup first to access" unless current_user.id == @user.id
+  	end
 
 	def user_params
   		params.require(:user).permit(:name, :email, :password, :password_confirmation)

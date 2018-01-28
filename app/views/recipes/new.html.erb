@@ -1,0 +1,19 @@
+<h1>Create new recipe!</h1>
+
+<br>
+
+<%= form_for @recipe, url: user_recipes_path(current_user.id), method: :post do |form| %>
+
+	Title: <%= form.text_field :title, class:"form-control" %><br>
+
+	Description: <%= form.text_area :description, class:"form-control" %><br>
+
+	Upload a cover photo <%= form.file_field :image %><br>
+
+	<%= form.hidden_field :user_id, value:current_user.id %>
+
+	<%= form.submit "Create!" %>
+
+<% end %>
+	
+

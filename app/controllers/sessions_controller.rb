@@ -4,18 +4,15 @@ class SessionsController < ApplicationController
 	end
 
 	def create
-		user = User.find_by_email(params[:email])
-    
+		user = User.find_by(email: params[:email])
     	if user && user.authenticate(params[:password])
-      
       	session[:user_id] = user.id
       	flash[:notice] = "Welcome back, " + user.name + "!"
       	redirect_to '/'
-    else
-    
-    	flash[:notice] = "Email and password mismatched. Try again."
-    	redirect_to '/sign_in'
-    end
+      else
+    	 flash[:notice] = "Email and password mismatched. Try again."
+    	 redirect_to '/sign_in'
+      end
 	end
 
 	def destroy
