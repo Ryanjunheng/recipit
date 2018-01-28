@@ -10,8 +10,11 @@ class SessionsController < ApplicationController
       	flash[:notice] = "Welcome back, " + user.name + "!"
       	redirect_to '/'
       else
-    	 flash[:notice] = "Email and password mismatched. Try again."
-    	 redirect_to '/sign_in'
+    	 # flash[:notice] = "Email and password mismatched. Try again."
+       respond_to do |format|
+          format.html { redirect_to '/sign_in' }
+          format.js
+        end
       end
 	end
 

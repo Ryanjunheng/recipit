@@ -13,8 +13,12 @@ class RecipesController < ApplicationController
 			flash[:notice] = "Recipe is created successfully!"
 			redirect_to user_recipe_path(current_user.id, @recipe.id)
 		else
-			flash[:notice] = "Something went wrong, please try again. (Please fill in all the fields)"
-			redirect_to new_user_recipe_path(current_user.id)
+			# flash[:notice] = "Something went wrong, please try again. (Please fill in all the fields)"
+			respond_to do |format|
+          		format.html { redirect_to new_user_recipe_path(current_user.id) }
+          		format.js
+        	end
+			
 		end
 	end
 

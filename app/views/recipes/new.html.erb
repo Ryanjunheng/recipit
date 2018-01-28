@@ -2,15 +2,15 @@
 
 <br>
 
-<%= form_for @recipe, url: user_recipes_path(current_user.id), method: :post do |form| %>
+<%= form_for @recipe, url: user_recipes_path(current_user.id), method: :post, remote: true do |form| %>
 
 	<%= form.hidden_field :user_id, value:current_user.id %>
 
-	<h3>Title:</h3> <%= form.text_field :title, class:"form-control" %><br>
+	<h3>Title(required):</h3> <%= form.text_field :title, class:"form-control" %><br>
 
-	<h3>Description:</h3> <%= form.text_area :description, class:"form-control" %><br>
+	<h3>Description(required):</h3> <%= form.text_area :description, class:"form-control" %><br>
 
-	<h3>Upload a cover photo</h3> <%= form.file_field :image %><br>
+	<h3>Upload a cover photo(required)</h3> <%= form.file_field :image %><br>
 
 	<h3>Ingredients:</h3>
 	<div id='ingredients'>
