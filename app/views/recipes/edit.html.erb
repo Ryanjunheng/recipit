@@ -1,0 +1,27 @@
+<h1>Edit recipe</h1>
+
+<br>
+
+<%= form_for @recipe, url: user_recipe_path(@recipe.user_id, @recipe.id), method: :put do |form| %>
+
+	Title: <%= form.text_field :title, class:"form-control" %><br>
+
+	Description: <%= form.text_area :description, class:"form-control" %><br>
+
+	<% if !@recipe.image.nil? %>
+		<%= image_tag @recipe.image.thumb %>
+	<% else %>
+		<p>No cover photo yet! Upload one!</p>
+	<% end %>
+	Upload a cover photo <%= form.file_field :image %><br>
+
+	<%= form.hidden_field :user_id, value:current_user.id %>
+
+	<%= link_to "Back", request.referer.present? ? request.referer : default_path, class:"btn btn-default" %>
+	
+	<%= form.submit "Update!", class:"btn btn-primary" %>
+	
+
+<% end %>
+	
+

@@ -2,4 +2,33 @@
 <br>
 
 <%= link_to "Edit", edit_user_path(@user.id), class:"btn btn-default" %>
-	
+<br>
+<hr>
+<% if @user.id == current_user.id %>
+	<h2>Your recipes:</h2>
+	<br>
+	<% if current_user.recipes.size != 0 %>
+		<% @recipe.each do |recipe| %>	
+			<h4><%= link_to recipe.title, user_recipe_path(@user.id, recipe.id) %></h4>
+			<br>
+			<hr>
+		<% end %>
+		<p><%= paginate @recipe %></p>
+	<% else %>
+		<h4>You have no recipe yet, <%= link_to "create one now!", new_user_recipe_path(current_user.id) %>
+	<% end %>
+<% elsif @user.id != current_user.id %>
+	<h2><%= @user.name %>'s recipes:</h2>
+	<br>
+	<% if @user.recipes.size != 0 %>
+		<% @recipe.each do |recipe| %>	
+			<h4><%= link_to recipe.title, user_recipe_path(@user.id, recipe.id) %></h4>
+			<br>
+			<hr>
+		<% end %>
+		<p><%= paginate @recipe %></p>
+	<% else %>
+		<h4><%= @user.name %> has no recipe yet</h4>
+	<% end %>
+<% end %>
+

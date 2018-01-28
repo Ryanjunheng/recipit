@@ -9,7 +9,11 @@
 	Password: <%= form.password_field :password, class:"form-control" %><br>
 
 	Password Confirmation: <%= form.password_field :password_confirmation, class:"form-control" %><br>
+
+	<%= link_to "Back", request.referer.present? ? request.referer : default_path, class:"btn btn-default" %>
 	
-	<%= form.submit value:"Update", class:"btn btn-primary align-cente" %>
+	<%= form.submit value:"Update", class:"btn btn-primary" %>
+
+
 
 <% end %>
