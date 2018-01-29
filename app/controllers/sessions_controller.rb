@@ -1,6 +1,9 @@
 class SessionsController < ApplicationController
 
 	def new
+    if logged_in?
+      redirect_to "/", notice: "You already signed in!"
+    end
 	end
 
 	def create
@@ -21,7 +24,7 @@ class SessionsController < ApplicationController
 	def destroy
 		session[:user_id] = nil
 		flash[:notice] = "Logged out sucessfuly. We will miss you ;("
-    	redirect_to '/'
+    redirect_to '/'
 	end
 
 	def create_from_omniauth

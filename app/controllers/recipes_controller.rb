@@ -44,7 +44,11 @@ class RecipesController < ApplicationController
 	private
 
 	def find_recipe 
-		@recipe = Recipe.find(params[:id])
+		if @recipe = Recipe.find_by(id: params[:id])
+			return @recipe
+		else
+			redirect_to "/", notice: "Recipe does not exist!"
+		end
 	end
 
 	def recipe_owner_check
