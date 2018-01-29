@@ -3,7 +3,11 @@ class UsersController < ApplicationController
 	before_action :current_user_check, only: [:edit, :update]
 
 	def new 
-		@user = User.new
+		if !logged_in?
+			@user = User.new
+		elsif logged_in?
+			redirect_to "/", notice: "You already signed up!"
+		end
 	end
 
 	def create
@@ -38,11 +42,15 @@ class UsersController < ApplicationController
 	private
 
 	def find_user
-		@user = User.find(params[:id])
+		if @user = User.find_by(id: params[:id])
+			return @user  
+		else
+			redirect_to "/", notice: "User does not exist!"
+		end
 	end
 
 	def current_user_check
-    	redirect_to "/", notice: "Hold it right there! Please login or signup first to access" unless current_user.id == @user.id
+    	redirect_to "/", notice: "Hold it right there! You don't have the permission to access!" unless current_user.id == @user.id
   	end
 
 	def user_params
