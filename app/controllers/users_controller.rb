@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   			# flash[:notice] = "Password confirmation doesn't match password"
   			respond_to do |format|
           		format.html { redirect_to '/sign_up' }
-          		format.js
+          		format.js 
         	end
     		
   		end

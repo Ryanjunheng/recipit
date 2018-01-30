@@ -1,6 +1,6 @@
 <h1>Login</h1>
 
-<%= form_tag '/login', remote: true do %>
+<%= form_tag '/login', remote: true, id:"sign-in" do %>
 
   Email: <%= text_field_tag :email, "", class:"form-control" %><br>
 

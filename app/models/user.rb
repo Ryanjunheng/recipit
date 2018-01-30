@@ -2,8 +2,11 @@ class User < ApplicationRecord
 	has_secure_password
 	
 	has_many :authentications, dependent: :destroy
-  has_many :recipes
-  validates :name, :email, :password, presence: true
+  has_many :recipes, dependent: :destroy
+  validates :name, presence: true, uniqueness: true, length: { minimum: 3 }
+  validates :email, presence: true, uniqueness: true, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
+  validates :password, presence: true
+  validates_confirmation_of :password
   
 
 	def self.create_with_auth_and_hash(authentication, auth_hash)
