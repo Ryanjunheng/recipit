@@ -3,6 +3,8 @@ class User < ApplicationRecord
 	
 	has_many :authentications, dependent: :destroy
   has_many :recipes
+  validates :name, :email, :password, presence: true
+  
 
 	def self.create_with_auth_and_hash(authentication, auth_hash)
      user = self.create!(

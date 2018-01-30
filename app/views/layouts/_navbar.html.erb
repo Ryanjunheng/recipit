@@ -1,10 +1,10 @@
-<nav class="navbar navbar-fixed-top">
+<nav id="mynav", class="navbar navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="/">RecipIt!</a>
     </div>
     <ul class="nav navbar-nav navbar-right">
-      <div class="navbar-left navbar-form">
+      <div id="search-bar", class="navbar-left navbar-form">
       <div class="form-group">
         <%= form_tag '/search', method: :get do %>
           <%= text_field_tag :search, params[:search], class:"form-control" %>
@@ -16,7 +16,7 @@
         <li><%= link_to "Sign up", sign_up_path %></li>
         <li><%= link_to "Sign in", sign_in_path %></li>
       <% elsif logged_in? %>
-        <li>Signed in as: <%= link_to current_user.name, user_path(current_user.id) %></li>
+        <li id="sign-in-as">Signed in as: <span><%= link_to current_user.name, user_path(current_user.id) %></span></li>
         <li><%= link_to "Create new recipe", new_user_recipe_path(current_user.id) %></li>
         <li><%= link_to "Sign out", sign_out_path, method: :delete %></li>
       <% end %>

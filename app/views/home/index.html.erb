@@ -1,35 +1,40 @@
-<h4>Check the weather before heading out for groceries:</h4>
-<p>Today is: <%= Time.now.strftime("%B %e, %Y") %>
-<p>Weather in <%= @city %>, MY</p>
-<img src="http://openweathermap.org/img/w/<%= @icon %>.png">&nbsp;&nbsp;<%= @temp %> &#8451;
-<p><%= @weather.capitalize %></p>
-<% if @weather.include?("rain") or @weather.include?("storm") or @weather.include?("snow") %>
-	<h5>Friendly reminder: Don't forget to bring umbrella :)</h5>
-<% elsif @weather.include?("mist") %>
-	<h5>Friendly reminder: Drive safely :)</h5>
-<% else %>
-	<h5>Friendly reminder: Don't forget to wear sunblock :)</h5>
-<% end %>
-<hr>
-
-<h1>Pick your recipe for today! </h1>
-<br>
-<br>
-<% if @recipe.size != 0 %>
-	<ul>
-		<% @recipe.each do |recipe| %>
-			<li>
-				<h3><%= link_to recipe.title, user_recipe_path(recipe.user_id, recipe.id) %></h3>
-				<p>Created by: <%= link_to recipe.user.name, user_path(recipe.user.id) %></p>
-			</li>
-			<br>
+<div id="weather-forecast">
+	<div id="weather-content">
+		<h4>Check the weather before heading out for groceries:</h4>
+		<p>Today is: <%= Time.now.strftime("%B %e, %Y") %></p>
+		<p>Weather in <%= @city %>, MY</p>
+		<img src="http://openweathermap.org/img/w/<%= @icon %>.png">&nbsp;&nbsp;<%= @temp %> &#8451;
+		<p><%= @weather.capitalize %></p>
+		<% if @weather.include?("rain") or @weather.include?("storm") or @weather.include?("snow") %>
+			<h5>Friendly reminder: Don't forget to bring umbrella :)</h5>
+		<% elsif @weather.include?("mist") %>
+			<h5>Friendly reminder: Drive safely :)</h5>
+		<% else %>
+			<h5>Friendly reminder: Don't forget to wear sunblock :)</h5>
 		<% end %>
-	</ul>
-<% else %>
-	<h3>No recipe created yet</h3>
-<% end %>
+	</div>
+</div>
 
-<p><%= paginate @recipe %></p>
+<div id="main-feed">
+	<h1>Pick your recipe for today! </h1>
+	<br>
+	<br>
+	<% if @recipe.size != 0 %>
+		<ul>
+			<% @recipe.each do |recipe| %>
+				<li>
+					<h3><%= link_to recipe.title, user_recipe_path(recipe.user_id, recipe.id) %></h3>
+					<p>Created by: <%= link_to recipe.user.name, user_path(recipe.user.id) %></p>
+				</li>
+				<br>
+			<% end %>
+		</ul>
+	<% else %>
+		<h3>No recipe created yet</h3>
+	<% end %>
+
+	<p><%= paginate @recipe %></p>
+</div>
 
 
 

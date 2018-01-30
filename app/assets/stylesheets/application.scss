@@ -6,5 +6,34 @@
 }
 
 body {
-	margin: 53px 0 0 0;
+	margin: 60px 0 0 0;
 }
+
+#sign-in-as {
+	top: 15px;
+}
+
+.align-center {
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+#search-bar {
+	margin-right: 250px;
+}
+
+#mynav {
+	border: 1px solid black;
+	margin: 5px 5px 5px 5px;
+	background-color: white
+}
+
+#weather-forecast {
+	border: 1px solid black;
+	width: 500px;
+	padding-left: 30px;
+	position: absolute;
+	left: 64.9%;
+}
+
