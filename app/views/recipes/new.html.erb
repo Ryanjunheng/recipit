@@ -18,7 +18,7 @@
       <%= render 'ingredient_fields', :form => ingredient %>
     <% end %>
     <div class='links'>
-      <%= link_to_add_association 'add ingredient', form, :ingredients, form_name: "form", class:"btn btn-default" %>
+      <%= link_to_add_association 'Add ingredient', form, :ingredients, form_name: "form", class:"btn btn-default" %>
     </div>
   	</div>
 
@@ -28,11 +28,11 @@
 		<%= render 'direction_fields', :form => direction %>
     <% end %>
     <div class='links'>
-      <%= link_to_add_association 'add direction', form, :directions, form_name: "form", class:"btn btn-default" %>
+      <%= link_to_add_association 'Add direction', form, :directions, form_name: "form", class:"btn btn-default" %>
     </div>
   	</div>
-
-	<%= form.submit "Create!" %>
+    <br>
+	<%= form.submit "Create!", class:"btn btn-primary" %>
 
 <% end %>
 	
