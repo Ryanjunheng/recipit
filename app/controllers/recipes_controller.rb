@@ -10,7 +10,7 @@ class RecipesController < ApplicationController
 	def create
 		@recipe = Recipe.new(recipe_params)
 		if @recipe.save
-			flash[:notice] = "Recipe is created successfully!"
+			flash[:success] = "Recipe is created successfully!"
 			redirect_to user_recipe_path(current_user.id, @recipe.id)
 		else
 			# flash[:notice] = "Something went wrong, please try again. (Please fill in all the fields)"
@@ -37,7 +37,7 @@ class RecipesController < ApplicationController
 
 	def destroy
 		@recipe.destroy
-		flash[:notice] = "Recipe has been deleted successfully!"
+		flash[:success] = "Recipe has been deleted successfully!"
 		redirect_to user_path(current_user.id)
 	end
 
@@ -47,12 +47,16 @@ class RecipesController < ApplicationController
 		if @recipe = Recipe.find_by(id: params[:id])
 			return @recipe
 		else
-			redirect_to "/", notice: "Recipe does not exist!"
+			redirect_to "/", error: "Recipe does not exist!"
 		end
 	end
 
 	def recipe_owner_check
-		redirect_to "/", notice: "Only the recipe's owner has the access!" unless current_user.id == @recipe.user_id
+		if logged_in? and current_user.id != @user.id 
+			redirect_to "/", alert: "Only the recipe's owner has the access!"
+		elsif !logged_in?
+			redirect_to "/", alert: "Only the recipe's owner has the access!"
+		end
 	end
 
 	def recipe_params

@@ -19,8 +19,10 @@
 	<% end %>
 </ol>
 <br>
-<%= link_to "Edit", edit_user_recipe_path(current_user.id, @recipe.id), class:"btn btn-default" %>
-<%= link_to "Delete", user_recipe_path(current_user.id, @recipe.id), method: :delete, data: { confirm: 'Sure? This action cannot be reverted!' }, class:"btn btn-danger" %>
+<% if logged_in? %>
+	<%= link_to "Edit", edit_user_recipe_path(current_user.id, @recipe.id), class:"btn btn-default" %>
+	<%= link_to "Delete", user_recipe_path(current_user.id, @recipe.id), method: :delete, data: { confirm: 'Sure? This action cannot be reverted!' }, class:"btn btn-danger" %>
+<% end %>
 
 
 

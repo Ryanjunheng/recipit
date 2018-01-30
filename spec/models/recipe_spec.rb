@@ -47,4 +47,15 @@ RSpec.describe Recipe, type: :model do
   	end
   end
 
+  describe "recipe custom methods test" do
+
+    it "will pass if it returns the correct number of ingredients" do
+      @recipe = Recipe.create(title: "some_title", description: "some_description", image: "some_image.png")
+      Ingredient.create(name: "something", recipe_id: @recipe.id)
+      Direction.create(step: "something", recipe_id: @recipe.id)
+      expect(@recipe.ing_count).to eq(1)
+    end
+
+  end
+
 end
