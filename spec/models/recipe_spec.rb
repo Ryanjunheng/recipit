@@ -10,10 +10,6 @@ RSpec.describe Recipe, type: :model do
   		it { should validate_presence_of(:description) }
   	end
 
-  	describe "validation of presence of image" do
-  		it { should validate_presence_of(:image) }
-  	end
-
   	describe "validation of presence of ingredients" do
   		it { should validate_presence_of(:ingredients) }
   	end
@@ -47,13 +43,22 @@ RSpec.describe Recipe, type: :model do
   	end
   end
 
-  describe "recipe custom methods test" do
+  describe "recipe model custom methods test" do
+
+    before :all do 
+      
+    end
 
     it "will pass if it returns the correct number of ingredients" do
-      @recipe = Recipe.create(title: "some_title", description: "some_description", image: "some_image.png")
-      Ingredient.create(name: "something", recipe_id: @recipe.id)
-      Direction.create(step: "something", recipe_id: @recipe.id)
-      expect(@recipe.ing_count).to eq(1)
+      @user = User.create(name:"somebody", email:"somebody@mail.com", password: "password")
+      @recipe = Recipe.create(title: "something", description: "something", user_id: @user.id, ingredients_attributes: [{name:"carrot"}, {name:"lettuce"}, {name:"chicken"}, {name:"salt"}], directions_attributes: [{step: "step1"}, {step: "step2"}, {step: "step3"}, {step: "step4"}, {step: "step5"}])
+      expect(@recipe.ing_count).to eq(4)
+    end
+
+    it "will pass if it returns the correct number of ingredients" do
+      @user = User.create(name:"somebody", email:"somebody@mail.com", password: "password")
+      @recipe = Recipe.create(title: "something", description: "something", user_id: @user.id, ingredients_attributes: [{name:"carrot"}, {name:"lettuce"}, {name:"chicken"}, {name:"salt"}], directions_attributes: [{step: "step1"}, {step: "step2"}, {step: "step3"}, {step: "step4"}, {step: "step5"}])
+      expect(@recipe.dir_count).to eq(5)
     end
 
   end
