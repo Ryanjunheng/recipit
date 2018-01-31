@@ -25,11 +25,11 @@
 				<li>
 					<h3><%= link_to recipe.title, user_recipe_path(recipe.user_id, recipe.id) %></h3>
 					<% if  recipe.dir_count <= 4 %>
-						<p>Difficulty: Easy Peasy :D</p>
+						<p>Difficulty: Easy Peasy :D | Requires: <%= recipe.ing_count %> ingredients. </p>
 					<% elsif recipe.dir_count > 4 and recipe.dir_count <= 8 %>
-						<p>Difficulty: Totally doable! :)</p>
+						<p>Difficulty: Totally doable! :) | Requires: <%= recipe.ing_count %> ingredients</p>
 					<% elsif recipe.dir_count > 8 %>
-						<p>Difficulty: Phew, challenging! ;)</p>
+						<p>Difficulty: Phew, challenging! ;) | Requires: <%= recipe.ing_count %> ingredients</p>
 					<% end %>
 					<p>Created by: <%= link_to recipe.user.name, user_path(recipe.user.id) %></p>
 				</li>

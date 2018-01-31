@@ -1,6 +1,14 @@
 <%= image_tag @recipe.image %>
 <br>
 <h1><%= @recipe.title %></h1>
+<p>Created by: <%= link_to recipe.user.name, user_path(recipe.user.id) %></p>
+<% if  @recipe.dir_count <= 4 %>
+	<p>Difficulty: Easy Peasy :D | Requires: <%= @recipe.ing_count %> ingredients. </p>
+<% elsif @recipe.dir_count > 4 and @recipe.dir_count <= 8 %>
+	<p>Difficulty: Totally doable! :) | Requires: <%= @recipe.ing_count %> ingredients</p>
+<% elsif @recipe.dir_count > 8 %>
+	<p>Difficulty: Phew, challenging! ;) | Requires: <%= @recipe.ing_count %> ingredients</p>
+<% end %>
 <br>
 <h3>Description:</h3>
 <p><%= @recipe.description %></p>
