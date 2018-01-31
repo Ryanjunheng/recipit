@@ -14,13 +14,13 @@ class UsersController < ApplicationController
 		user = User.new(user_params)
   		if user.save
     		session[:user_id] = user.id
-    		flash[:notice] = "Signed up successfully"
+    		flash[:success] = "Signed up successfully"
     		redirect_to '/'
   		else
   			# flash[:notice] = "Password confirmation doesn't match password"
   			respond_to do |format|
           		format.html { redirect_to '/sign_up' }
-          		format.js
+          		format.js 
         	end
     		
   		end
@@ -35,7 +35,7 @@ class UsersController < ApplicationController
 
 	def update
 		@user.update(user_params)
-		flash[:notice] = "Profile has been updated successfully!"
+		flash[:success] = "Profile has been updated successfully!"
 		redirect_to @user
 	end
 
@@ -45,12 +45,16 @@ class UsersController < ApplicationController
 		if @user = User.find_by(id: params[:id])
 			return @user  
 		else
-			redirect_to "/", notice: "User does not exist!"
+			redirect_to "/", error: "User does not exist!"
 		end
 	end
 
 	def current_user_check
-    	redirect_to "/", notice: "Hold it right there! You don't have the permission to access!" unless current_user.id == @user.id
+		if logged_in? and current_user.id != @user.id 
+    		redirect_to "/", alert: "Hold it right there! You don't have the permission to access!"
+    	elsif !logged_in?
+    		redirect_to "/", alert: "Hold it right there! You don't have the permission to access!"
+    	end
   	end
 
 	def user_params

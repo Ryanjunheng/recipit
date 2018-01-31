@@ -1,4 +1,4 @@
 class Ingredient < ApplicationRecord
-  belongs_to :recipe
-  validates :name, presence: true
+  belongs_to :recipe, optional: true
+  validates :recipe, presence: true
 end
