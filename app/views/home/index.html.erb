@@ -1,7 +1,6 @@
 <div id="weather-forecast">
 	<div id="weather-content">
 		<h4>Check the weather before heading out for groceries:</h4>
-		<p>Today is: <%= Time.now.strftime("%B %e, %Y") %></p>
 		<p>Weather in <%= @city %>, MY</p>
 		<img src="http://openweathermap.org/img/w/<%= @icon %>.png">&nbsp;&nbsp;<%= @temp %> &#8451;
 		<p><%= @weather.capitalize %></p>
