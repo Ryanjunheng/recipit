@@ -51,10 +51,22 @@ RSpec.describe Recipe, type: :model do
       expect(@recipe.ing_count).to eq(4)
     end
 
+    it "will pass if it doesn't return the wrong number of ingredients" do
+      @user = User.create(name:"somebody", email:"somebody@mail.com", password: "password")
+      @recipe = Recipe.create(title: "something", description: "something", user_id: @user.id, ingredients_attributes: [{name:"carrot"}, {name:"lettuce"}, {name:"chicken"}, {name:"salt"}], directions_attributes: [{step: "step1"}, {step: "step2"}, {step: "step3"}, {step: "step4"}, {step: "step5"}])
+      expect(@recipe.ing_count).not_to eq(5)
+    end    
+
     it "will pass if it returns the correct number of steps" do
       @user = User.create(name:"somebody", email:"somebody@mail.com", password: "password")
       @recipe = Recipe.create(title: "something", description: "something", user_id: @user.id, ingredients_attributes: [{name:"carrot"}, {name:"lettuce"}, {name:"chicken"}, {name:"salt"}], directions_attributes: [{step: "step1"}, {step: "step2"}, {step: "step3"}, {step: "step4"}, {step: "step5"}])
       expect(@recipe.dir_count).to eq(5)
+    end
+
+    it "will pass if it doesn't return the wrong number of steps" do
+      @user = User.create(name:"somebody", email:"somebody@mail.com", password: "password")
+      @recipe = Recipe.create(title: "something", description: "something", user_id: @user.id, ingredients_attributes: [{name:"carrot"}, {name:"lettuce"}, {name:"chicken"}, {name:"salt"}], directions_attributes: [{step: "step1"}, {step: "step2"}, {step: "step3"}, {step: "step4"}, {step: "step5"}])
+      expect(@recipe.dir_count).not_to eq(3)
     end
 
   end
