@@ -19,6 +19,8 @@ gem 'fog'
 gem 'kaminari'
 gem "cocoon"
 gem 'rest-client'
+gem 'jquery-turbolinks'
+gem 'rails_12factor', group: :production
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
 # Use Puma as the app server
