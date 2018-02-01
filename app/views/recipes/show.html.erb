@@ -1,4 +1,6 @@
+<div class="recipe-img">
 <%= image_tag @recipe.image %>
+</div>
 <br>
 <h1><%= @recipe.title %></h1>
 <p>Created by: <%= link_to @recipe.user.name, user_path(@recipe.user.id) %></p>
