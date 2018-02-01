@@ -79,8 +79,7 @@ body {
 
 .recipe-img {
 	width: 400px;
-    min-height: 225px;
-    max-height: auto;
+    height: 300px;
     margin: 3px;
     padding: 3px;
 
@@ -88,7 +87,8 @@ body {
 
 .recipe-img img {
 	max-width: 100%;
-    height: auto;
+	max-height: 100%;
+	object-fit: fill;
 }
 
 .sign-up-form {
