@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
 
 	def index
-		@recipe = Recipe.includes(:user).order(:created_at).page params[:page]
+		@recipe = Recipe.includes(:user).order(created_at: :desc).page params[:page]
 
 		resp = RestClient.get("http://api.openweathermap.org/data/2.5/weather?q=kuala%20lumpur&appid=5261318cfb0bef89c5636df1236c3240")
   		hash = JSON.parse(resp.body)
