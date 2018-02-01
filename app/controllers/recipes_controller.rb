@@ -1,7 +1,7 @@
 class RecipesController < ApplicationController
 	before_action :find_recipe, only: [:show, :edit, :update, :destroy]
 	before_action :recipe_owner_check, only: [:edit, :update, :destroy]
-	before_action :logged_in?, only: [:new] 
+	before_action :logged_in_check, only: [:new] 
 
 	def new
 		@recipe = Recipe.new
@@ -50,6 +50,12 @@ class RecipesController < ApplicationController
 			redirect_to "/", error: "Recipe does not exist!"
 		end
 	end
+
+	def logged_in_check
+    	if current_user.nil?
+    		redirect_to "/", alert: "Log in or Sign up first!"
+    	end
+  	end
 
 	def recipe_owner_check
 		if logged_in? and current_user.id != @recipe.user_id
