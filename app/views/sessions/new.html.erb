@@ -1,3 +1,5 @@
+<div class="sign-in-form align-center">
+<div class="user-form">
 <h1>Login</h1>
 
 <%= form_tag '/login', remote: true, id:"sign-in" do %>
@@ -5,12 +7,12 @@
   Email: <%= text_field_tag :email, "", class:"form-control" %><br>
 
   Password: <%= password_field_tag :password, "", class:"form-control" %><br>
+</div>
+  <%= submit_tag "Submit", class:"btn btn-primary align-center" %><br><br>
 
-  <%= submit_tag "Submit", class:"btn btn-primary" %>
-
-  <br><br>
-  <p>OR</p>
+  <p class="orr text-center">OR</p>
   
-  <p><%= link_to raw('<i class="fa fa-facebook-official" aria-hidden="true"></i> Sign in with Facebook'), "/auth/facebook", class:"btn btn-primary" %></p>
+  <p><%= link_to raw('<i class="fa fa-facebook-official" aria-hidden="true"></i> Sign in with Facebook'), "/auth/facebook", class:"btn btn-primary align-center" %></p>
 
 <% end %>
+</div>

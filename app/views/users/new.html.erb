@@ -1,5 +1,6 @@
+<div class="sign-up-form align-center">
+<div class="user-form">
 <h1>Signup!</h1>
-
 <%= form_for @user, remote: true do |form| %>
 
   Name: <%= form.text_field :name, class:"form-control" %><br>
@@ -9,11 +10,13 @@
   Password: <%= form.password_field :password, class:"form-control" %><br>
 
   Password Confirmation: <%= form.password_field :password_confirmation, class:"form-control" %><br>
+</div>
 
-  <%= form.submit "Submit", class:"btn btn-primary" %><br><br>
+  <%= form.submit "Submit", class:"btn btn-primary align-center" %><br><br>
 
-  <p class="align-center">OR</p>
+  <p class="orr text-center">OR</p>
 
-  <p><%= link_to raw('<i class="fa fa-facebook-official" aria-hidden="true"></i> Sign up with Facebook'), "/auth/facebook", class:"btn btn-primary" %></p>
+  <p><%= link_to raw('<i class="fa fa-facebook-official" aria-hidden="true"></i> Sign up with Facebook'), "/auth/facebook", class:"btn btn-primary align-center" %></p>
 
 <% end %>
+</div>

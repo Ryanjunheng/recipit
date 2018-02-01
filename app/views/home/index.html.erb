@@ -15,33 +15,41 @@
 	</div>
 </div>
 
-<div id="main-feed">
-	<h1>Pick your recipe for today! </h1>
+
+	<h1 id="index-title">Cooking has never been so easy! </h1>
 	<br>
 	<br>
 	<% if @recipe.size != 0 %>
-		<ul>
-			<% @recipe.each do |recipe| %>
-				<li>
-					<h3><%= link_to recipe.title, user_recipe_path(recipe.user_id, recipe.id) %></h3>
-					<% if  recipe.dir_count <= 4 %>
-						<p>Difficulty: Easy Peasy :D</p>
-					<% elsif recipe.dir_count > 4 and recipe.dir_count <= 8 %>
-						<p>Difficulty: Totally doable! :)</p>
-					<% elsif recipe.dir_count > 8 %>
-						<p>Difficulty: Phew, challenging! ;)</p>
-					<% end %>
-					<p>Created by: <%= link_to recipe.user.name, user_path(recipe.user.id) %></p>
-				</li>
-				<br>
+	<div id="recipe-grid" class="align-center">
+		
+		<% @recipe.each do |recipe| %>
+		<div class="square">
+			<% if recipe.image != nil %>
+			<div class="recipe-img align-center">
+				<%= image_tag recipe.image %>
+			</div>
 			<% end %>
-		</ul>
+			<div class="recipe-detail">
+			<h3><%= link_to recipe.title, user_recipe_path(recipe.user_id, recipe.id) %></h3>
+			<% if  recipe.dir_count <= 4 %>
+				<p>Difficulty: Easy Peasy :D | Requires: <%= recipe.ing_count %> ingredients. </p>
+			<% elsif recipe.dir_count > 4 and recipe.dir_count <= 8 %>
+				<p>Difficulty: Totally doable! :) | Requires: <%= recipe.ing_count %> ingredients</p>
+			<% elsif recipe.dir_count > 8 %>
+				<p>Difficulty: Phew, challenging! ;) | Requires: <%= recipe.ing_count %> ingredients</p>
+			<% end %>
+			<p>Created by: <%= link_to recipe.user.name, user_path(recipe.user.id) %></p>			
+			<br>
+			</div>
+			</div>
+		<% end %>
+	
+	</div>	
 	<% else %>
-		<h3>No recipe created yet</h3>
+		<h3 class="text-center">No recipe created yet</h3>
 	<% end %>
 
-	<p><%= paginate @recipe %></p>
-</div>
+	<span class="align-center pagination"><%= paginate @recipe %></span>
 
 
 

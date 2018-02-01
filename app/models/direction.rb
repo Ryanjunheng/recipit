@@ -1,4 +1,4 @@
 class Direction < ApplicationRecord
-  belongs_to :recipe, optional: true
+  belongs_to :recipe
   validates :recipe, presence: true
 end
