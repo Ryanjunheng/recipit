@@ -45,7 +45,7 @@ class UsersController < ApplicationController
 		if @user = User.find_by(id: params[:id])
 			return @user  
 		else
-			redirect_to "/", error: "User does not exist!"
+			redirect_to "/", alert: "User does not exist!"
 		end
 	end
 
