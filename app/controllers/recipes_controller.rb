@@ -52,7 +52,7 @@ class RecipesController < ApplicationController
 	end
 
 	def recipe_owner_check
-		if logged_in? and current_user.id != @user.id 
+		if logged_in? and current_user.id != @recipe.user_id
 			redirect_to "/", alert: "Only the recipe's owner has the access!"
 		elsif !logged_in?
 			redirect_to "/", alert: "Only the recipe's owner has the access!"
