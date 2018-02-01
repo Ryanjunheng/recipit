@@ -25,9 +25,9 @@
 		<% @recipe.each do |recipe| %>
 		<div class="square">
 			<% if recipe.image != nil %>
-			
-				<%= image_tag recipe.image, class:"imagey" %>
-			
+			<div class="recipe-img align-center">
+				<%= image_tag recipe.image %>
+			</div>
 			<% end %>
 			<div class="recipe-detail">
 			<h3><%= link_to recipe.title, user_recipe_path(recipe.user_id, recipe.id) %></h3>

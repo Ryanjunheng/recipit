@@ -77,11 +77,17 @@ body {
 	padding-left: 7px;
 }
 
-
-
-.imagey {
+.recipe-img {
 	width: 400px;
-	height: 300px;
+    height: 300px;
+    margin: 3px;
+    padding: 3px;
+
+}
+
+.recipe-img img {
+	max-width: 350px;
+	max-height: 250px;
 }
 
 .sign-up-form {
