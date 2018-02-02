@@ -47,7 +47,7 @@ class RecipesController < ApplicationController
 		if @recipe = Recipe.find_by(id: params[:id])
 			return @recipe
 		else
-			redirect_to "/", error: "Recipe does not exist!"
+			redirect_to "/", alert: "Recipe does not exist!"
 		end
 	end
 
