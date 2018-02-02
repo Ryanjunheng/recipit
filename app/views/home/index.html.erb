@@ -1,7 +1,7 @@
 <div id="weather-forecast">
 	<div id="weather-content">
 		<h4>Check the weather before heading out for groceries:</h4>
-		<p>Weather in <%= @city %>, MY</p>
+		<p>Weather today in <%= @city %>, MY</p>
 		<img src="http://openweathermap.org/img/w/<%= @icon %>.png">&nbsp;&nbsp;<%= @temp %> &#8451;
 		<p><%= @weather.capitalize %></p>
 		<% if @weather.include?("rain") or @weather.include?("storm") or @weather.include?("snow") %>
