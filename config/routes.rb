@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   	delete "/sign_out" => "sessions#destroy", as: "sign_out"
   	get "/auth/:provider/callback" => "sessions#create_from_omniauth"
     get "/search" => "home#search"
+
+    get "/*path" => "home#index"
 end
