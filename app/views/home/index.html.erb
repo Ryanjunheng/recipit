@@ -24,8 +24,8 @@
 		<% @recipe.each do |recipe| %>
 		<div class="square">
 			<% if recipe.image != nil %>
-			<div class="recipe-img align-center">
-				<%= image_tag recipe.image, class:"align-center"%>
+			<div class="recipe-img">
+				<%= image_tag recipe.image, class:"img-responsive"%>
 			</div>
 			<% end %>
 			<div class="recipe-detail">
